@@ -1,0 +1,177 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+    #app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #content {
+        width: 1200px;
+        margin-top: 18px;
+        margin-bottom: 18px;
+        opacity: 0.9;
+    }
+
+    .articles-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .article-main {
+        display: flex;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .muli-font {
+        font-weight: normal;
+        font-size: 14px;
+        font-family: Muli, sans-serif;
+        line-height: 24px;
+    }
+
+    .article-side {
+        margin-left: 12px;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        color:#585858;
+    }
+
+    .article-text {
+        flex: 1;
+    }
+
+    .stylized-link {
+        color: #05c3de;
+    }
+
+    .article-image {
+        border-radius: 12px;
+        width: 591px;
+        min-width: 591px;
+        height: 378px;
+        min-height: 378px;
+    }
+
+    .social-media-badge {
+        width: 30px;
+    }
+
+    #subscribe-box {
+        width: 100%;
+        background-color: #393939;
+        display: flex;
+        color: white;
+        padding: 12px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .subscribe-box-text {
+        color: #a9a9a9;
+    }
+</style>
+
+</head>
+<body>
+<div id="app">
+
+    <div id="content" class="jumbotron articles-list">
+        <h1 class="display-4" align="center">Siemandero</h1>
+        <p class="lead">What the fuck did you just fucking say about me, you little bitch? I'll have you know I graduated top of my class in the Navy Seals, and I've been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I'm the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You're fucking dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that's just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit. If only you could have known what unholy retribution your little "clever" comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn't, you didn't, and now you're paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You're fucking dead, kiddo.</p>
+        <div v-for="(article, index) in articles" :id="`article${index}`" class="article-main">
+            <img :src="article.image" :href="article.link" class="article-image">
+            <div class="article-side muli-font">
+                <small>{{ article.provider.toUpperCase() }}</small>
+                <a class="stylized-link" :href="article.link"><b>{{ article.title }}</b></a>
+                <p class="article-text">{{ article.text }}</p>
+            </div>
+        </div>
+    </div>
+
+    <span align="center" style="margin-bottom: 18px">
+        Zajebiście że czytasz o drzewach.<br>
+        Zrozum drzewa. Stań się drzewem.<br>
+        Dołącz do nas <a class="stylized-link" href="https://kedzierzynkozle.pl">tutaj</a>.
+    </span>
+
+    <div style="margin-bottom: 18px">
+        <a href="mailto:mojszkot@onet.pl">
+            <img class="social-media-badge" src="https://gallery.mailchimp.com/06181e488a52e21a59269aec8/images/e247e267-aad8-4bb0-82b6-5b0bfd6e7ca3.png">
+        </a>
+        <a href="https://facebook.com/brazil">
+            <img class="social-media-badge" src="https://gallery.mailchimp.com/06181e488a52e21a59269aec8/images/fe00b0d2-12b2-4818-a368-c0486cf5d08f.png">
+        </a>
+        <a href="https://instagram.com/brazil">
+            <img class="social-media-badge" src="https://gallery.mailchimp.com/06181e488a52e21a59269aec8/images/49bb6e2d-32a2-4f97-898f-834910490faa.png">
+        </a>
+    </div>
+
+    <div id="subscribe-box" class="muli-font">
+        <div style="flex: 1; padding-right: 50px;">
+            <p><b>SUBSKRYPCJA</b></p>
+            <span class="subscribe-box-text">No nic, w każdym razie, w przypadku bycia zainteresowanym drzewiastą inicjacą, proszę o kontakt na mail <a class="stylized-link" href="mailto:mistrzbrzozy@o2.pl">mistrzbrzozy@o2.pl</a>. Proszę przynieść swój własny pień.</span>
+        </div>
+        <div>
+            <p><b>LASSLY</b></p>
+            <span class="subscribe-box-text">
+                Lassly sp. ooo<br>
+                Dębowa 10<br>
+                74-124 Genowefów
+            </span>
+        <div>
+
+        </div>
+    </div>
+    
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                articles: [
+                    {
+                        title: "Pierwszy las",
+                        provider: "lassly.com",
+                        link: "https://google.com",
+                        text: "Który las był tym pierwszym?",
+                        image: "https://wmeritum.pl/wp-content/uploads/2020/04/lasy-pa%C5%84stwowe.jpg",
+                    },
+                    {
+                        title: "Rodzaje lasów",
+                        provider: "lassly.com",
+                        link: "https://kosciol.pl",
+                        text: "Są różne lasy: Iglaste i Liściaste",
+                        image: "https://www.lasy.gov.pl/++theme++lasy/cache/img/static_157226696741/7c0ec1aa-d24d-45d9-88a1-1bc2ae328b8e.jpeg",
+                    },
+                    {
+                        title: "Top 10 drzew",
+                        provider: "krolestwodrzew.pl",
+                        link: "https://kotlet.pl",
+                        text: "klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon klon ",
+                        image: "https://www.rybnik.com.pl/images/galbig3/news/44197/lasy-panstwowe_5e874819f3f2d7_88695316.jpg.jpg",
+                    },
+                    {
+                        title: "Gdzie jest jura krakowsko-częstochowska?",
+                        provider: "magiakory.rs",
+                        link: "https://antylopy.com",
+                        text: "Odpowiedzi w środku",
+                        image: "https://portalkomunalny.pl/wp-content/uploads/2016/02/depositphotos_14254099_original.jpg",
+                    },
+                ],
+            },
+        });
+    </script>
+        
+</div>
+</body>
+</html>
